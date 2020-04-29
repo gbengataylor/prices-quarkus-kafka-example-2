@@ -5,6 +5,7 @@ import org.eclipse.microprofile.reactive.messaging.Incoming;
 import org.eclipse.microprofile.reactive.messaging.Outgoing;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 
 /**
  * A bean consuming data from the "prices" Kafka topic and applying some conversion.
@@ -13,14 +14,15 @@ import javax.enterprise.context.ApplicationScoped;
 @ApplicationScoped
 public class PriceConverter {
 
-    private static final double CONVERSION_RATE = 0.88;
+    @Inject 
+    ConversionRate conversionRate;
 
     @Incoming("prices")                                 
-    @Outgoing("my-data-stream")                         
+    @Outgoing("my-data-stream")                  
     @Broadcast                                          
     public double process(int priceInUsd) {
-        System.out.println("received price: " + priceInUsd);
-        return priceInUsd * CONVERSION_RATE;
+        System.out.println("received price: " + priceInUsd + " conversion rate is " + conversionRate.getConversionRate());
+        return priceInUsd * conversionRate.getConversionRate();
     }
 
 }

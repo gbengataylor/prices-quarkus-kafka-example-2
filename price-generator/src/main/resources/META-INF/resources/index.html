@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>price-generator - 1.0-SNAPSHOT</title>
+    <title>price-generator v2- 1.0-SNAPSHOT</title>
     <style>
         h1, h2, h3, h4, h5, h6 {
             margin-bottom: 0.5rem;
@@ -105,33 +105,25 @@
 
 <div class="container">
     <div class="left-column">
-        <p class="lead"> Congratulations, you have created a new Quarkus application.</p>
-
-        <h2>Why do you see this?</h2>
-
-        <p>This page is served by Quarkus. The source is in
-            <code>src/main/resources/META-INF/resources/index.html</code>.</p>
-
-        <h2>What can I do from here?</h2>
-
-        <p>If not already done, run the application in <em>dev mode</em> using: <code>mvn compile quarkus:dev</code>.
-        </p>
-        <ul>
-            <li>Add REST resources, Servlets, functions and other services in <code>src/main/java</code>.</li>
-            <li>Your static assets are located in <code>src/main/resources/META-INF/resources</code>.</li>
-            <li>Configure your application in <code>src/main/resources/application.properties</code>.
-            </li>
-        </ul>
-
-        <h2>How do I get rid of this page?</h2>
-        <p>Just delete the <code>src/main/resources/META-INF/resources/index.html</code> file.</p>
-    </div>
+        <div class="left-column">
+            <p class="lead"> This is a Quarkus application.</p>
+            <p> Its job is to Generate Prices and Conversion rates</p>
+            <p> It came from <a href="https://github.com/gbengataylor/prices-quarkus-kafka-example-2">the github source code here</a></pWhy do you see this?</h2>
+    
+            <h2>What can I do from here?</h2>
+            <p>There is no UI, this app should be accessed via its REST APIs. But you can try some basic things via the links below...</p>
+            <h3><a href="/set-price">/generate prices</a></h3>
+            <h3><a href="/set-conversion-rate">/generate conversion rate</a></h3>
+       <!--  <h3><a href="/health">/health</a></h3>
+            <h3><a href="/swagger-ui/">/swagger-ui/</a></h3>
+            -->   
+        </div>
     <div class="right-column">
         <div class="right-section">
             <h3>Application</h3>
             <ul>
                 <li>GroupId: org.acme</li>
-                <li>ArtifactId: price-generator</li>
+                <li>ArtifactId: price-generator-v2</li>
                 <li>Version: 1.0-SNAPSHOT</li>
                 <li>Quarkus Version: 1.4.1.Final</li>
             </ul>

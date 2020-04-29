@@ -1,34 +1,28 @@
 package org.acme.kafka;
 
-import java.util.Random;
-import java.util.concurrent.CompletionStage;
-
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import com.google.inject.spi.Message;
-
-import io.vertx.axle.core.eventbus.EventBus;
-
-/**
- * A simple resource retrieving the in-memory "my-data-stream" and sending the items as server-sent events.
- */
-@Path("/gen-price")
+@Path("/")
 public class PriceGeneratorResource {
 
-    @Inject EventBus bus;
-    private Random random = new Random();
+    @Inject
+    PriceAndRateService service;
 
     @GET
-
+    @Path("/set-price")
     @Produces(MediaType.TEXT_PLAIN)
-    public Integer generatePrice() { 
-     int price = random.nextInt(100);
-        bus.<Integer>send("prices", Integer.valueOf(price));
-       return price;
+    public Integer setPrice() { 
+        return service.setPrice();
     }
 
+    @GET
+    @Path("/set-conversion-rate")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Double setConversionRate() { 
+       return service.setConversionRate(); 
+    }
 }

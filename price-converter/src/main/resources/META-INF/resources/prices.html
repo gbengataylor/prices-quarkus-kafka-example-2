@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Prices</title>
+    <title>Prices Version TWO</title>
 
     <link rel="stylesheet" type="text/css"
           href="https://cdnjs.cloudflare.com/ajax/libs/patternfly/3.24.0/css/patternfly.min.css">
@@ -11,6 +11,12 @@
 </head>
 <body>
 <div class="container">
+    <h1> Prices Version 2</h1>
+    <h2>Current Conversion Rate</h2>
+    <div class="row">
+     <p class="col-md-12">The original conversion rate is <strong>.88</span>&nbsp;</strong>.</p>
+    <p class="col-md-12">The updated conversion rate is <strong><span id="rate-content">N/A</span>&nbsp;</strong>.</p>
+    </div>
 
     <h2>Last price</h2>
     <div class="row">
@@ -23,6 +29,11 @@
     var source = new EventSource("/prices/stream");
     source.onmessage = function (event) {
         document.getElementById("content").innerHTML = event.data;
+    };
+</script><script>
+    var source = new EventSource("/rate/stream");
+    source.onmessage = function (event) {
+        document.getElementById("rate-content").innerHTML = event.data;
     };
 </script>
 </html>
