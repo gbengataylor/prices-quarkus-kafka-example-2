@@ -71,7 +71,7 @@ docker-compose -f kafka/docker-compose.yaml down
 ```
 
 ## Deploy AMQ Streams
-Set the OpenShi name
+Set the OpenShift name
 ```sh
 PRICES_PROJECT=prices-kafka
 ```
@@ -106,8 +106,24 @@ oc run kafka-consumer -ti --image=registry.redhat.io/amq7/amq-streams-kafka-23:1
 oc delete pod kafka-producer
 oc delete pod kafka-consumer
 ```
+## Deploy microservices on OpenShift from remote git repo
 
-## Deploy microservices on openshift
+```
+oc new-app registry.access.redhat.com/redhat-openjdk-18/openjdk18-openshift~https://github.com/gbengataylor/prices-quarkus-kafka-example.git --context-dir=price-generator --name=price-generator
+
+oc expose svc price-generator 
+
+oc new-app registry.access.redhat.com/redhat-openjdk-18/openjdk18-openshift~https://github.com/gbengataylor/prices-quarkus-kafka-example.git --context-dir=price-converter --name=price-converter
+
+oc expose svc price-converter 
+
+oc label dc/price-generator  app.kubernetes.io/part-of=prices --overwrite
+oc label dc/price-generator  app.openshift.io/runtime=java --overwrite 
+oc label dc/price-converter  app.kubernetes.io/part-of=prices --overwrite
+oc label dc/price-converter app.openshift.io/runtime=java --overwrite 
+```
+
+## Deploy microservices on openshift using local git repo/source code
 
 **Note**: This assumes that the Kafka Cluster has been deployed on OpenShift and in the same project
 ```sh
@@ -153,7 +169,7 @@ oc new-app price-converter-v2:1.0-SNAPSHOT
 oc expose service price-converter-v2
 ```
 
-### Test
+## Test On OpenShift
 ```
 export URL="http://$(oc get route price-converter-v2 -o jsonpath='{.spec.host}')"
 echo "Navigate to  URL: $URL/prices.html to view updated prices"
