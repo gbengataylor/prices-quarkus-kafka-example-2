@@ -25,8 +25,7 @@ public class PriceAndRateService {
     }
     
     @Inject
-    @Channel("in-mem-conversion-rate") // map to kafka topic
-    //@Stream
+    @Channel("in-mem-conversion-rate") // send to in-memory bus
     Emitter<Double> emitter;
 
 	public Double setConversionRate() {

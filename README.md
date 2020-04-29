@@ -1,6 +1,5 @@
 # prices-quarkus-kafka-example-2
-Kafka example with quarkus and kafka (amq streams). This is based on the Quarkus Kafka example [here](https://quarkus.io/guides/kafka). The difference is that the application is decomposed into two microservices and also modified to add more kafka topics and multiple methods of producing a kafka message. It also gives the user the
-ability to update the conversion rate and generate a new price on-demand
+Kafka example with quarkus and kafka (amq streams). This is based on the Quarkus Kafka example [here](https://quarkus.io/guides/kafka). The difference is that the application is decomposed into two microservices and also modified to add more kafka topics and multiple methods of producing a kafka message. It also gives the user the ability to update the conversion rate and generate a new price on-demand. The code demonstrates two different patterns (Kafka Producer client and Smallrye Reactive Kafka Messaging) to write to Kafka Topics.
 
 *This project uses JDK 8 but probably needs to be updated to use 11 since 8 is deprecated with later versions of Quarkus*
 
