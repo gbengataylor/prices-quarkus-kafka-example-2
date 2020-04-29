@@ -3,8 +3,6 @@ Kafka example with quarkus and kafka (amq streams). This is based on the Quarkus
 
 *This project uses JDK 8 but probably needs to be updated to use 11 since 8 is deprecated with later versions of Quarkus*
 
-**TODO: Update Diagram**
-
 ![](images/kafka-guide-architecture.png)
 ![](images/kafka-guide-architecture-2.png)
 
