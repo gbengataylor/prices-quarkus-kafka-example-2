@@ -6,6 +6,7 @@ Kafka example with quarkus and kafka (amq streams). This is based on the Quarkus
 **TODO: Update Diagram**
 
 ![](images/kafka-guide-architecture.png)
+![](images/kafka-guide-architecture-2.png)
 
 ## Local development
 
@@ -109,11 +110,11 @@ oc delete pod kafka-consumer
 ## Deploy microservices on OpenShift from remote git repo
 
 ```
-oc new-app registry.access.redhat.com/redhat-openjdk-18/openjdk18-openshift~https://github.com/gbengataylor/prices-quarkus-kafka-example.git --context-dir=price-generator --name=price-generator-v2
+oc new-app registry.access.redhat.com/redhat-openjdk-18/openjdk18-openshift~https://github.com/gbengataylor/prices-quarkus-kafka-example-2.git --context-dir=price-generator --name=price-generator-v2
 
 oc expose svc price-generator-v2 
 
-oc new-app registry.access.redhat.com/redhat-openjdk-18/openjdk18-openshift~https://github.com/gbengataylor/prices-quarkus-kafka-example.git --context-dir=price-converter --name=price-converter-v2
+oc new-app registry.access.redhat.com/redhat-openjdk-18/openjdk18-openshift~https://github.com/gbengataylor/prices-quarkus-kafka-example-2.git --context-dir=price-converter --name=price-converter-v2
 
 oc expose svc price-converter-v2 
 
