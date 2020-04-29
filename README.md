@@ -109,18 +109,18 @@ oc delete pod kafka-consumer
 ## Deploy microservices on OpenShift from remote git repo
 
 ```
-oc new-app registry.access.redhat.com/redhat-openjdk-18/openjdk18-openshift~https://github.com/gbengataylor/prices-quarkus-kafka-example.git --context-dir=price-generator --name=price-generator
+oc new-app registry.access.redhat.com/redhat-openjdk-18/openjdk18-openshift~https://github.com/gbengataylor/prices-quarkus-kafka-example.git --context-dir=price-generator --name=price-generator-v2
 
-oc expose svc price-generator 
+oc expose svc price-generator-v2 
 
-oc new-app registry.access.redhat.com/redhat-openjdk-18/openjdk18-openshift~https://github.com/gbengataylor/prices-quarkus-kafka-example.git --context-dir=price-converter --name=price-converter
+oc new-app registry.access.redhat.com/redhat-openjdk-18/openjdk18-openshift~https://github.com/gbengataylor/prices-quarkus-kafka-example.git --context-dir=price-converter --name=price-converter-v2
 
-oc expose svc price-converter 
+oc expose svc price-converter-v2 
 
-oc label dc/price-generator  app.kubernetes.io/part-of=prices --overwrite
-oc label dc/price-generator  app.openshift.io/runtime=java --overwrite 
-oc label dc/price-converter  app.kubernetes.io/part-of=prices --overwrite
-oc label dc/price-converter app.openshift.io/runtime=java --overwrite 
+oc label dc/price-generator-v2  app.kubernetes.io/part-of=prices-v2 --overwrite
+oc label dc/price-generator-v2  app.openshift.io/runtime=java --overwrite 
+oc label dc/price-converter-v2  app.kubernetes.io/part-of=prices-v2 --overwrite
+oc label dc/price-converter-v2 app.openshift.io/runtime=java --overwrite 
 ```
 
 ## Deploy microservices on openshift using local git repo/source code
