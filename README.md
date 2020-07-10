@@ -185,5 +185,5 @@ echo "Navigate to  URL: $GEN_URL/index.html to view links to update the conversi
 To view the stream using the http tool
 ```
 http $URL/prices/stream --stream
-http $URL/rates/stream --stream
+http $URL/rate/stream --stream
 ```
