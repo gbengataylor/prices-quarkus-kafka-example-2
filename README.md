@@ -181,3 +181,9 @@ echo "Navigate to  URL: $URL/prices.html to view updated prices"
 export URL="http://$(oc get route price-generator-v2 -o jsonpath='{.spec.host}')"
 echo "Navigate to  URL: $URL/index.html to view links to update the conversion rate and prices"
 ```
+
+To view the stream using the http tool
+```
+http $URL/prices/stream --stream
+http $URL/rates/stream --stream
+```
